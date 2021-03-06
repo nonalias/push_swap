@@ -213,18 +213,18 @@ int main(int argc, char **argv)
 	}
 	show_stack(a, "A");
 	show_stack(b, "B");
-	while (get_next_line(0, &line))
+	while (get_next_line(0, &line) > 0)
 	{
 		action(&a, &b, line);
-	show_stack(a, "A");
-	show_stack(b, "B");
+		show_stack(a, "A");
+		show_stack(b, "B");
 		free(line);
 	}
 	/*
 	show_stack(a, "A");
 	show_stack(b, "B");
 	*/
-	for (int i = a.top; i < a.bottom; i++)
+	for (int i = a.top; i < a.bottom - 1; i++)
 	{
 		if (a.nums[a.top] > a.nums[a.top + 1])
 		{

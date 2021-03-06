@@ -12,6 +12,7 @@
 
 #include "get_next_line.h"
 
+#include <stdio.h>
 int		ft_reading(int fd, char **src)
 {
 	char			buf[BUFFER_SIZE + 1];
@@ -24,6 +25,7 @@ int		ft_reading(int fd, char **src)
 		if (ft_has_new_line(buf))
 			break ;
 	}
+	printf("%d\n", temp);
 	if (temp == -1 || BUFFER_SIZE <= 0)
 		return (-1);
 	if (temp == 0 && !*src)

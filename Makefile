@@ -34,6 +34,7 @@ push_swap	:	$(P_OBJS) $(libft) $(GNL_OBJS)
 clean		:	
 	$(MAKE) clean -C Libft
 	rm -rf $(C_OBJS)
+	rm -rf $(GNL_OBJS)
 
 fclean		:	clean
 	$(MAKE) fclean -C Libft
