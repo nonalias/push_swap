@@ -338,6 +338,7 @@ int		main(int argc, char **argv)
 		msg("Error\n");
 		return (1);
 	}
+	//printf("hello world");
 	//get_commands(&a, &b);
 	//show_stack(a, "A");
 	//show_stack(b, "B");

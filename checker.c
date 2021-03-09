@@ -12,8 +12,8 @@ int main(int argc, char **argv)
 		msg("Error\n");
 		return (1);
 	}
-	show_stack(a, "A");
-	show_stack(b, "B");
+	//show_stack(a, "A");
+	//show_stack(b, "B");
 	int count = 0;
 	while (get_next_line(0, &line) > 0)
 	{
@@ -23,11 +23,9 @@ int main(int argc, char **argv)
 		free(line);
 		count++;
 	}
-	printf("count : %d\n", count);
-	/*
+	//printf("count : %d\n", count);
 	show_stack(a, "A");
 	show_stack(b, "B");
-	*/
 	for (int i = a.top; i < a.bottom - 1; i++)
 	{
 		if (a.nums[i] > a.nums[i + 1])

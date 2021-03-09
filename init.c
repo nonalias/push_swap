@@ -6,6 +6,8 @@ int		init(t_stack *a, t_stack *b, int argc, char **argv)
 
 	if (!validate(argc, argv))
 		return (0);
+	//a->nums = malloc(sizeof(int) * 10000);
+	//b->nums = malloc(sizeof(int) * 10000);
 	a->top = 5000;
 	a->bottom = 5000 + argc - 1;
 	i = 0;
