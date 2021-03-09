@@ -1,6 +1,6 @@
 #ifndef __PUSH_SWAP_H
 #define __PUSH_SWAP_H
-#include "./Libft/libft.h"
+#include "./Libft1/libft.h"
 #include "get_next_line.h"
 #include <unistd.h>
 #include <stdio.h>

@@ -29,12 +29,12 @@ P_SRCS	=	push_swap.c \
 
 P_OBJS	=	$(P_SRCS:%.c=%.o)
 
-libft	=	Libft/libft.a
+libft	=	Libft1/libft.a
 
 all	:	checker push_swap
 
 $(libft)		:	
-	$(MAKE) -C Libft
+	$(MAKE) -C Libft1
 
 $(checker):	$(C_OBJS) $(libft) $(GNL_OBJS)
 	$(CC) $(CFLAGS) $^ -o $@
@@ -49,12 +49,12 @@ $(push_swap)	:	$(P_OBJS) $(libft) $(GNL_OBJS)
 
 
 clean		:	
-	$(MAKE) clean -C Libft
+	$(MAKE) clean -C Libft1
 	rm -rf $(C_OBJS)
 	rm -rf $(GNL_OBJS)
 
 fclean		:	clean
-	$(MAKE) fclean -C Libft
+	$(MAKE) fclean -C Libft1
 	rm -rf $(checker) $(push_swap)
 
 .PHONY		:	all checker push_swap  libft clean fclean

@@ -1,4 +1,4 @@
-#include "Libft/libft.h"
+#include "Libft1/libft.h"
 int		ft_intlen(int i)
 {
 	int		len;
