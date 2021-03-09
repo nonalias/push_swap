@@ -1,9 +1,5 @@
 #include "push_swap.h"
 
-void	msg(const char *str)
-{
-	ft_putstr_fd(str, 1);
-}
 
 int main(int argc, char **argv)
 {
@@ -34,7 +30,7 @@ int main(int argc, char **argv)
 	*/
 	for (int i = a.top; i < a.bottom - 1; i++)
 	{
-		if (a.nums[a.top] > a.nums[a.top + 1])
+		if (a.nums[i] > a.nums[i + 1])
 		{
 			printf("KO\n");
 			return (0);

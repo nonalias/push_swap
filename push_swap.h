@@ -31,6 +31,5 @@ void	show_stack(t_stack a, const char *what);
 
 int		init(t_stack *a, t_stack *b, int argc, char **argv);
 
-
 void	msg(const char *str);
 #endif

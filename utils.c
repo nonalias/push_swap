@@ -1,3 +1,4 @@
+#include "Libft/libft.h"
 int		ft_intlen(int i)
 {
 	int		len;
@@ -14,4 +15,9 @@ int		ft_intlen(int i)
 		len++;
 	}
 	return (len);
+}
+
+void	msg(const char *str)
+{
+	ft_putstr_fd(str, 1);
 }

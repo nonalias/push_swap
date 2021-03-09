@@ -19,7 +19,14 @@ C_SRCS	=	checker.c \
 		stack_utils.c \
 
 C_OBJS	=	$(C_SRCS:%.c=%.o)
-P_SRCS	=	push_swap.c
+P_SRCS	=	push_swap.c \
+		validate.c \
+		init.c \
+		utils.c \
+		line_exec.c \
+		action.c \
+		stack_utils.c \
+
 P_OBJS	=	$(P_SRCS:%.c=%.o)
 
 libft	=	Libft/libft.a
