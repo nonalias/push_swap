@@ -7,7 +7,17 @@ GNL	=	get_next_line.c \
 
 GNL_OBJS	=	$(GNL:%.c=%.o)
 
-C_SRCS	=	checker.c
+checker	=	checker
+push_swap	=	push_swap
+
+C_SRCS	=	checker.c \
+		validate.c \
+		init.c \
+		utils.c \
+		line_exec.c \
+		action.c \
+		stack_utils.c \
+
 C_OBJS	=	$(C_SRCS:%.c=%.o)
 P_SRCS	=	push_swap.c
 P_OBJS	=	$(P_SRCS:%.c=%.o)
@@ -19,10 +29,10 @@ all	:	checker push_swap
 $(libft)		:	
 	$(MAKE) -C Libft
 
-checker	:	$(C_OBJS) $(libft) $(GNL_OBJS)
+$(checker):	$(C_OBJS) $(libft) $(GNL_OBJS)
 	$(CC) $(CFLAGS) $^ -o $@
 
-push_swap	:	$(P_OBJS) $(libft) $(GNL_OBJS)
+$(push_swap)	:	$(P_OBJS) $(libft) $(GNL_OBJS)
 	$(CC) $(CFLAGS) $^ -o $@
 
 
