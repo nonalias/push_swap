@@ -14,14 +14,12 @@ int main(int argc, char **argv)
 	}
 	//show_stack(a, "A");
 	//show_stack(b, "B");
-	int count = 0;
 	while (get_next_line(0, &line) > 0)
 	{
 		line_exec(&a, &b, line);
-		show_stack(a, "A");
-		show_stack(b, "B");
+		//show_stack(a, "A");
+		//show_stack(b, "B");
 		free(line);
-		count++;
 	}
 	//printf("count : %d\n", count);
 	show_stack(a, "A");
