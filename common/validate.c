@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   validate.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: taehkim <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/03/18 21:38:50 by taehkim           #+#    #+#             */
+/*   Updated: 2021/03/18 21:38:51 by taehkim          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/push_swap.h"
 
 long long	ft_atoll(const char *str)
@@ -5,6 +17,7 @@ long long	ft_atoll(const char *str)
 	int			idx;
 	long long	result;
 	int			sign;
+
 	idx = 0;
 	result = 0;
 	sign = 0;
@@ -22,10 +35,11 @@ long long	ft_atoll(const char *str)
 	return (sign * result);
 }
 
-int is_in_integer(long long number)
+int			is_in_integer(long long number)
 {
-	long long min;
-	long long max;
+	long long	min;
+	long long	max;
+
 	min = -2147483648;
 	max = 2147483647;
 	if (min <= number && number <= max)
@@ -33,7 +47,7 @@ int is_in_integer(long long number)
 	return (0);
 }
 
-int		validate(int argc, char **argv)
+int			validate(int argc, char **argv)
 {
 	int		i;
 	int		j;

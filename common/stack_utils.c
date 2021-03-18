@@ -1,18 +1,34 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   stack_utils.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: taehkim <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/03/18 21:41:17 by taehkim           #+#    #+#             */
+/*   Updated: 2021/03/18 21:41:19 by taehkim          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/push_swap.h"
 
 int		get_stack_size(t_stack stack)
 {
-	return stack.bottom - stack.top;
+	return (stack.bottom - stack.top);
 }
 
 int		get_stack_nbr_len(t_stack st)
 {
-	int count = 0;
+	int		count;
+	int		i;
 
-	for (int i = st.top; i < st.bottom; i++)
+	count = 0;
+	i = st.top;
+	while (i < st.bottom)
 	{
 		count += ft_intlen(st.nums[i]);
 		count += 1;
+		i++;
 	}
 	return (count);
 }
@@ -42,4 +58,3 @@ void	show_stack(t_stack a, const char *what)
 		msg("-");
 	msg("\n");
 }
-

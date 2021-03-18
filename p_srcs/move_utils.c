@@ -1,11 +1,24 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   move_utils.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: taehkim <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/03/18 21:42:17 by taehkim           #+#    #+#             */
+/*   Updated: 2021/03/18 21:42:18 by taehkim          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/push_swap.h"
 
 int		get_min_index(t_stack st)
 {
-	long	min = 2500000000;
+	long	min;
 	int		min_index;
 	int		i;
 
+	min = 2500000000;
 	i = st.top;
 	while (i < st.bottom)
 	{
@@ -21,10 +34,11 @@ int		get_min_index(t_stack st)
 
 int		get_max_index(t_stack st)
 {
-	long	max = -2500000000;
+	long	max;
 	int		max_index;
 	int		i;
 
+	max = -2500000000;
 	i = st.top;
 	while (i < st.bottom)
 	{

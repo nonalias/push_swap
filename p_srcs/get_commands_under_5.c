@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_commands_under_5.c                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: taehkim <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/03/18 21:45:27 by taehkim           #+#    #+#             */
+/*   Updated: 2021/03/18 21:46:19 by taehkim          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/push_swap.h"
 
 void	get_3_commands(t_stack *a)
@@ -62,4 +74,3 @@ void	get_2_commands(t_stack *a)
 	if (a->nums[a->top] > a->nums[a->top + 1])
 		msg_act_one("sa", ft_swap, a);
 }
-

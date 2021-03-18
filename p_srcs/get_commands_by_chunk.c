@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_commands_by_chunk.c                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: taehkim <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/03/18 21:45:46 by taehkim           #+#    #+#             */
+/*   Updated: 2021/03/18 21:45:56 by taehkim          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/push_swap.h"
 
 int		find_medium(t_stack st, int chunk_size, int repeat)
@@ -59,7 +71,6 @@ void	push_to_a_with_sort(t_stack *a, t_stack *b)
 			move_to_the_top(b, max_index, 1);
 			msg_act_two("pa", ft_push, b, a);
 		}
-
 	}
 }
 

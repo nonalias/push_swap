@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   action.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: taehkim <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/03/18 21:32:58 by taehkim           #+#    #+#             */
+/*   Updated: 2021/03/18 21:33:31 by taehkim          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/push_swap.h"
 
 void	ft_swap(t_stack *st)
@@ -5,7 +17,7 @@ void	ft_swap(t_stack *st)
 	int		temp;
 
 	if (st->size <= 1)
-		return;
+		return ;
 	temp = st->nums[st->top];
 	st->nums[st->top] = st->nums[st->top + 1];
 	st->nums[st->top + 1] = temp;
