@@ -161,7 +161,62 @@ int		find_medium(t_stack st, int chunk_size, int repeat)
 	return (st.nums[st.top + (chunk_size * repeat - 1)]);
 }
 
-#define CHUNK_SIZE 70
+void	get_3_commands(t_stack *a, t_stack *b)
+{
+	if (a->nums[a->top] > a->nums[a->top + 1] &&
+			a->nums[a->top + 1] > a->nums[a->top + 2])
+	{
+		msg_act_one("sa", ft_swap, a);
+		msg_act_one("rra", ft_r_reverse, a);
+	}
+	else if (a->nums[a->top] > a->nums[a->top + 1] &&
+			a->nums[a->top + 1] < a->nums[a->top + 2] &&
+			a->nums[a->top] < a->nums[a->top + 2])
+		msg_act_one("sa", ft_swap, a);
+	else if (a->nums[a->top] > a->nums[a->top + 1] &&
+			a->nums[a->top + 1] < a->nums[a->top + 2] &&
+			a->nums[a->top] > a->nums[a->top + 2])
+		msg_act_one("ra", ft_reverse, a);
+	else if (a->nums[a->top] < a->nums[a->top + 1] &&
+			a->nums[a->top + 1] > a->nums[a->top + 2] &&
+			a->nums[a->top] < a->nums[a->top + 2])
+	{
+		msg_act_one("sa", ft_swap, a);
+		msg_act_one("ra", ft_reverse, a);
+	}
+	else if (a->nums[a->top] < a->nums[a->top + 1] &&
+			a->nums[a->top + 1] > a->nums[a->top + 2] &&
+			a->nums[a->top] > a->nums[a->top + 2])
+		msg_act_one("rra", ft_r_reverse, a);
+}
+
+void	get_under_5_commands(t_stack *a, t_stack *b)
+{
+	int		min_index;
+	int		max_index;
+	int		min_index_dist;
+	int		max_index_dist;
+
+	while (get_stack_size(*a) > 3)
+	{
+		min_index = get_min_index(*a);
+		max_index = get_max_index(*a);
+		min_index_dist = get_dist_to_top(*a, min_index);
+		max_index_dist = get_dist_to_top(*a, max_index);
+		if (min_index_dist < max_index_dist)
+			move_to_the_top(a, min_index, 0);
+		else
+			move_to_the_top(a, max_index, 0);
+		msg_act_two("pb", ft_push, a, b);
+	}
+	get_3_commands(a, b);
+	while (get_stack_size(*b))
+	{
+		msg_act_two("pa", ft_push, b, a);
+		if (a->nums[a->top] > a->nums[a->top + 1])
+			msg_act_one("ra", ft_reverse, a);
+	}
+}
 
 void	get_commands(t_stack *a, t_stack *b)
 {
@@ -173,10 +228,16 @@ void	get_commands(t_stack *a, t_stack *b)
 
 	// medium -> 25 50 75 100 이 순차적으로 나와야 함.
 	size = get_stack_size(*a);
-	k = 0;
-	while (k < size / CHUNK_SIZE)
+	if (size == 5 || size == 4)
+		get_under_5_commands(a, b);
+	else if (size == 3)
+		get_3_commands(a, b);
+	else
 	{
-		medium = find_medium(*a, CHUNK_SIZE, k + 1);
+	k = 0;
+	while (k < size / a->chunk_size)
+	{
+		medium = find_medium(*a, a->chunk_size, k + 1);
 		i = 0;
 		while (i < size)
 		{
@@ -241,6 +302,7 @@ void	get_commands(t_stack *a, t_stack *b)
 
 	//show_stack(*a, "A");
 	//show_stack(*b, "B");
+	}
 }
 
 int		main(int argc, char **argv)

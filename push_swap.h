@@ -11,6 +11,7 @@ typedef struct	s_stack
 	int		top;
 	int		bottom;
 	int		size;
+	int		chunk_size;
 }				t_stack;
 
 int		ft_intlen(int n);
