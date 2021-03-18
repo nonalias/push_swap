@@ -7,6 +7,8 @@ int main(int argc, char **argv)
 	t_stack	b;
 	char	*line;
 
+	if (argc <= 1)
+		return (1);
 	if (!init(&a, &b, argc, argv))
 	{
 		msg("Error\n");
@@ -16,7 +18,7 @@ int main(int argc, char **argv)
 	//show_stack(b, "B");
 	while (get_next_line(0, &line) > 0)
 	{
-		printf("%s\n", line);
+		//printf("%s\n", line);
 		line_exec(&a, &b, line);
 		//show_stack(a, "A");
 		//show_stack(b, "B");

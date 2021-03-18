@@ -1,5 +1,38 @@
 #include "push_swap.h"
 
+long long	ft_atoll(const char *str)
+{
+	int			idx;
+	long long	result;
+	int			sign;
+	idx = 0;
+	result = 0;
+	sign = 0;
+	while (str[idx] == ' ' || (str[idx] > 8 && str[idx] < 14))
+		idx++;
+	if (str[idx] == '+' || str[idx] == '-')
+		sign = -(str[idx++] - 44);
+	if (str[idx] >= '0' && str[idx] <= '9')
+	{
+		if (sign == 0)
+			sign = 1;
+		while (str[idx] >= '0' && str[idx] <= '9')
+			result = (result * 10) + (str[idx++] - '0');
+	}
+	return (sign * result);
+}
+
+int is_in_integer(long long number)
+{
+	long long min;
+	long long max;
+	min = -2147483648;
+	max = 2147483647;
+	if (min <= number && number <= max)
+		return (1);
+	return (0);
+}
+
 int		validate(int argc, char **argv)
 {
 	int		i;
@@ -21,6 +54,8 @@ int		validate(int argc, char **argv)
 				return (0);
 			j++;
 		}
+		if (!is_in_integer(ft_atoll(argv[i])))
+			return (0);
 		i++;
 	}
 	return (1);

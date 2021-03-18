@@ -248,11 +248,15 @@ int		main(int argc, char **argv)
 	t_stack a;
 	t_stack b;
 
+	if (argc <= 1)
+		return (1);
 	if (!init(&a, &b, argc, argv))
 	{
 		msg("Error\n");
 		return (1);
 	}
+	if (check_asc(a))
+		return (0);
 	//printf("hello world");
 	//get_commands(&a, &b);
 	//three_element_asc_sort(&a);
