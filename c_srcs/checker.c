@@ -18,8 +18,8 @@ int main(int argc, char **argv)
 		line_exec(&a, &b, line);
 		free(line);
 	}
-	show_stack(a, "A");
-	show_stack(b, "B");
+	//show_stack(a, "A");
+	//show_stack(b, "B");
 	if (check_asc(a))
 		msg("OK");
 	else

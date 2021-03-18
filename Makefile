@@ -54,13 +54,13 @@ $(PUSH_SWAP)	:	$(P_OBJS) $(libft) $(GNL_OBJS)
 
 clean		:	
 	$(MAKE) clean -C Libft1
-	rm $(C_OBJS)
-	rm $(P_OBJS)
-	rm $(GNL_OBJS)
+	rm -f $(C_OBJS)
+	rm -f $(P_OBJS)
+	rm -f $(GNL_OBJS)
 
 fclean		:	clean
 	$(MAKE) fclean -C Libft1
-	rm $(checker) $(push_swap)
+	rm -f $(CHECKER) $(PUSH_SWAP)
 
 re		:	fclean all
 
