@@ -14,7 +14,7 @@ int main(void)
 	cin >> N;
 	fouts.open(to_string(N) + ".txt");
 
-	unsigned int rand_int = rnd();
+	int rand_int = rnd();
 	// -> 랜덤한 난수 생성
 	// 여기서, random_device 객체는 음수값도 반환하기 때문에 unsigned 로 선언해 주어야
 	// 양수 값의 범위를 구할 수 있다.

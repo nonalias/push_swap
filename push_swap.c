@@ -134,7 +134,7 @@ void	pa_all(t_stack *a, t_stack *b)
 		msg_act_two("pa", ft_push, b, a);
 }
 
-int		find_medium(t_stack st)
+int		find_medium(t_stack st, int chunk_size, int repeat)
 {
 	int		i;
 	int		j;
@@ -158,48 +158,60 @@ int		find_medium(t_stack st)
 		}
 		i++;
 	}
-	return (st.nums[(st.top + size / 2) - 1]);
+	return (st.nums[st.top + (chunk_size * repeat - 1)]);
 }
+
+#define CHUNK_SIZE 70
 
 void	get_commands(t_stack *a, t_stack *b)
 {
 	int		i;
+	int		k;
 	int		size;
 	int		medium;
+	int		before = -987654321;
 
-	medium = find_medium(*a);
+	// medium -> 25 50 75 100 이 순차적으로 나와야 함.
 	size = get_stack_size(*a);
-	i = 0;
-	while (i < size)
+	k = 0;
+	while (k < size / CHUNK_SIZE)
 	{
-		if (a->nums[a->top] <= medium)
-			msg_act_two("pb", ft_push, a, b);
-		else
-			msg_act_one("ra", ft_reverse, a);
-		i++;
-	}
-	while (get_stack_size(*b))
-	{
-		int min_index = get_min_index(*b);
-		int max_index = get_max_index(*b);
-		int	min_index_dist = get_dist_to_top(*b, min_index);
-		int	max_index_dist = get_dist_to_top(*b, max_index);
+		medium = find_medium(*a, CHUNK_SIZE, k + 1);
+		i = 0;
+		while (i < size)
+		{
+			if (a->nums[a->top] <= medium && a->nums[a->top] > before)
+				msg_act_two("pb", ft_push, a, b);
+			else
+				msg_act_one("ra", ft_reverse, a);
+			i++;
+		}
+		while (get_stack_size(*b))
+		{
+			int min_index = get_min_index(*b);
+			int max_index = get_max_index(*b);
+			int	min_index_dist = get_dist_to_top(*b, min_index);
+			int	max_index_dist = get_dist_to_top(*b, max_index);
 
-		//min_index_dist < max_index_dist ? move_to_top(b, min_index) : move_to_top(b, max_index);
-		if (min_index_dist < max_index_dist)
-		{
-			move_to_the_top(b, min_index, 1);
-			msg_act_two("pa", ft_push, b, a);
+			//min_index_dist < max_index_dist ? move_to_top(b, min_index) : move_to_top(b, max_index);
+			if (min_index_dist < max_index_dist)
+			{
+				move_to_the_top(b, min_index, 1);
+				msg_act_two("pa", ft_push, b, a);
+				msg_act_one("ra", ft_reverse, a);
+			}
+			else
+			{
+				move_to_the_top(b, max_index, 1);
+				msg_act_two("pa", ft_push, b, a);
+			}
+
+		}
+		while (a->nums[a->top] <= medium && a->nums[a->top] > before)
 			msg_act_one("ra", ft_reverse, a);
-		}
-		else
-		{
-			move_to_the_top(b, max_index, 1);
-			msg_act_two("pa", ft_push, b, a);
-		}
+		before = medium;
+		k++;
 	}
-	while (a->nums[a->top] <= medium)
-		msg_act_one("ra", ft_reverse, a);
 	while (a->nums[a->top] > medium)
 		msg_act_two("pb", ft_push, a, b);
 	while (get_stack_size(*b))
@@ -221,9 +233,12 @@ void	get_commands(t_stack *a, t_stack *b)
 			move_to_the_top(b, max_index, 1);
 			msg_act_two("pa", ft_push, b, a);
 		}
+
 	}
+
 	while (a->nums[a->top] > medium)
 		msg_act_one("ra", ft_reverse, a);
+
 	//show_stack(*a, "A");
 	//show_stack(*b, "B");
 }
@@ -240,10 +255,11 @@ int		main(int argc, char **argv)
 	}
 	//printf("hello world");
 	//get_commands(&a, &b);
-	//show_stack(a, "A");
-	//show_stack(b, "B");
 	//three_element_asc_sort(&a);
 	get_commands(&a, &b);
+	//printf("%d\n", a.top);
+	//show_stack(a, "A");
+	//show_stack(b, "B");
 	//over_three_element_desc_sort(&a);
 	//show_stack(a, "A");
 	//show_stack(b, "B");
