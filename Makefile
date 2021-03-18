@@ -1,31 +1,35 @@
 CC	=	clang
-CFLAG	=	-Wall -Wextra -Werror
+CFLAGS	=	-Wall -Wextra -Werror
 HEADER	=	
 
-GNL	=	get_next_line.c \
-		get_next_line_utils.c
+GNL	=	./c_srcs/get_next_line.c \
+		./c_srcs/get_next_line_utils.c
 
 GNL_OBJS	=	$(GNL:%.c=%.o)
 
-checker	=	checker
-push_swap	=	push_swap
+CHECKER	=	checker
+PUSH_SWAP	=	push_swap
 
-C_SRCS	=	checker.c \
-		validate.c \
-		init.c \
-		utils.c \
-		line_exec.c \
-		action.c \
-		stack_utils.c \
+C_SRCS	=	./c_srcs/checker.c \
+		./common/validate.c \
+		./common/init.c \
+		./common/utils.c \
+		./c_srcs/line_exec.c \
+		./common/action.c \
+		./common/stack_utils.c \
+		./common/msg_action.c \
 
 C_OBJS	=	$(C_SRCS:%.c=%.o)
-P_SRCS	=	push_swap.c \
-		validate.c \
-		init.c \
-		utils.c \
-		line_exec.c \
-		action.c \
-		stack_utils.c \
+P_SRCS	=	./p_srcs/push_swap.c \
+		./common/validate.c \
+		./common/init.c \
+		./common/utils.c \
+		./common/action.c \
+		./common/stack_utils.c \
+		./common/msg_action.c \
+		./p_srcs/get_commands_under_5.c \
+		./p_srcs/get_commands_by_chunk.c \
+		./p_srcs/move_utils.c \
 
 P_OBJS	=	$(P_SRCS:%.c=%.o)
 
@@ -36,10 +40,10 @@ all	:	checker push_swap
 $(libft)		:	
 	$(MAKE) -C Libft1
 
-$(checker):	$(C_OBJS) $(libft) $(GNL_OBJS)
+$(CHECKER):	$(C_OBJS) $(libft) $(GNL_OBJS)
 	$(CC) $(CFLAGS) $^ -o $@
 
-$(push_swap)	:	$(P_OBJS) $(libft) $(GNL_OBJS)
+$(PUSH_SWAP)	:	$(P_OBJS) $(libft) $(GNL_OBJS)
 	$(CC) $(CFLAGS) $^ -o $@
 
 
@@ -50,12 +54,14 @@ $(push_swap)	:	$(P_OBJS) $(libft) $(GNL_OBJS)
 
 clean		:	
 	$(MAKE) clean -C Libft1
-	rm -rf $(C_OBJS)
-	rm -rf $(P_OBJS)
-	rm -rf $(GNL_OBJS)
+	rm $(C_OBJS)
+	rm $(P_OBJS)
+	rm $(GNL_OBJS)
 
 fclean		:	clean
 	$(MAKE) fclean -C Libft1
-	rm -rf $(checker) $(push_swap)
+	rm $(checker) $(push_swap)
 
-.PHONY		:	all checker push_swap  libft clean fclean
+re		:	fclean all
+
+.PHONY		:	all checker push_swap  libft clean fclean re

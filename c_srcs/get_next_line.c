@@ -24,8 +24,8 @@ int		ft_reading(int fd, char **src)
 		if (ft_has_new_line(buf))
 			break ;
 	}
-	if (temp == -1 || BUFFER_SIZE <= 0 ||
-			(temp == 0 && !*src))
+	if (temp == -1 || BUFFER_SIZE <= 0
+			|| (temp == 0 && !*src))
 		return (-1);
 	if (temp == 0 && *src)
 		return (0);

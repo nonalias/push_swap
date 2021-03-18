@@ -16,7 +16,7 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <fcntl.h>
-# include "./Libft1/libft.h"
+# include "../Libft1/libft.h"
 
 char	*ft_strndup(char *src, int size);
 void	ft_src_set(char **src, int temp);

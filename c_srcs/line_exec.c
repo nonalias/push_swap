@@ -1,4 +1,27 @@
-#include "push_swap.h"
+#include "../includes/push_swap.h"
+
+void	line_exec2(t_stack *a, t_stack *b, char *line)
+{
+	if (!ft_strncmp(line, "rr", 3))
+	{
+		ft_reverse(a);
+		ft_reverse(b);
+	}
+	else if (!ft_strncmp(line, "rra", 4))
+		ft_r_reverse(a);
+	else if (!ft_strncmp(line, "rrb", 4))
+		ft_r_reverse(b);
+	else if (!ft_strncmp(line, "rrr", 4))
+	{
+		ft_r_reverse(a);
+		ft_r_reverse(b);
+	}
+	else
+	{
+		msg("Error\n");
+		exit(1);
+	}
+}
 
 void	line_exec(t_stack *a, t_stack *b, char *line)
 {
@@ -19,23 +42,6 @@ void	line_exec(t_stack *a, t_stack *b, char *line)
 		ft_reverse(a);
 	else if (!ft_strncmp(line, "rb", 3))
 		ft_reverse(b);
-	else if (!ft_strncmp(line, "rr", 3))
-	{
-		ft_reverse(a);
-		ft_reverse(b);
-	}
-	else if (!ft_strncmp(line, "rra", 4))
-		ft_r_reverse(a);
-	else if (!ft_strncmp(line, "rrb", 4))
-		ft_r_reverse(b);
-	else if (!ft_strncmp(line, "rrr", 4))
-	{
-		ft_r_reverse(a);
-		ft_r_reverse(b);
-	}
 	else
-	{
-		msg("Error\n");
-		exit(1);
-	}
+		line_exec2(a, b, line);
 }

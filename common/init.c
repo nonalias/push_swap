@@ -1,4 +1,4 @@
-#include "push_swap.h"
+#include "../includes/push_swap.h"
 
 int		check_overlap(t_stack *st, int num)
 {
@@ -14,6 +14,16 @@ int		check_overlap(t_stack *st, int num)
 	return (0);
 }
 
+void	get_chunk(t_stack *a)
+{
+	if (a->size >= 100 && a->size < 250)
+		a->chunk_size = a->size / 3;
+	else if (a->size >= 250)
+		a->chunk_size = a->size / 5;
+	else
+		a->chunk_size = 2;
+}
+
 int		init(t_stack *a, t_stack *b, int argc, char **argv)
 {
 	int		i;
@@ -23,7 +33,6 @@ int		init(t_stack *a, t_stack *b, int argc, char **argv)
 		return (0);
 	a->top = 5000;
 	a->bottom = 5000;
-	//a->bottom = 5000 + argc - 1;
 	i = 0;
 	while (i < argc - 1)
 	{
@@ -35,12 +44,7 @@ int		init(t_stack *a, t_stack *b, int argc, char **argv)
 		i++;
 	}
 	a->size = get_stack_size(*a);
-	if (a->size >= 100 && a->size < 250)
-		a->chunk_size = a->size / 3;
-	else if (a->size >= 250)
-		a->chunk_size = a->size / 5;
-	else
-		a->chunk_size = 2;
+	get_chunk(a);
 	b->top = 5000;
 	b->bottom = 5000;
 	b->size = get_stack_size(*b);
